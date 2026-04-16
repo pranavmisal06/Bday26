@@ -7,20 +7,20 @@
 <style>
 body {
   margin: 0;
-  padding: 0;
   background: black;
+  height: 100dvh;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100dvh;
   font-family: 'Segoe UI', sans-serif;
 }
 
+/* CONTAINER */
 .container {
   width: 100vw;
   height: 100dvh;
-  overflow: hidden;
   position: relative;
+  overflow: hidden;
 }
 
 /* PAGES */
@@ -32,27 +32,25 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  text-align: center;
-  color: white;
+  background: black;
 }
 
 .active {
   display: flex;
 }
 
-/* ✅ FIXED IMAGE (NO ZOOM) */
-#page1 {
-  background: url('Birthday Photo Collage Canvas Print in Teal Light Blue Polaroid Style 2.png') center center no-repeat;
-  background-size: contain; /* IMPORTANT */
-  background-color: black;
+/* ✅ IMAGE (NO ZOOM, ORIGINAL RATIO) */
+#page1 img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
 }
 
-/* ✅ FIXED VIDEO (NO ZOOM) */
+/* ✅ VIDEO (NO ZOOM, ORIGINAL RATIO) */
 video {
-  width: 100%;
-  height: 100%;
-  object-fit: contain; /* IMPORTANT */
-  background: black;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
 }
 
 /* BUTTONS */
@@ -69,12 +67,13 @@ button {
   border: none;
   background: #00c6ff;
   color: black;
-  font-size: clamp(14px, 2vw, 18px);
+  font-size: 16px;
 }
 
 /* PAGE 3 */
 #page3 {
-  position: relative;
+  text-align: center;
+  color: white;
 }
 
 #blurbg {
@@ -97,7 +96,7 @@ button {
 .message {
   width: 90%;
   max-width: 600px;
-  font-size: clamp(16px, 2.5vw, 20px);
+  font-size: 18px;
   line-height: 1.8;
   padding: 25px;
   border-radius: 20px;
@@ -105,9 +104,6 @@ button {
   background: rgba(255,255,255,0.05);
 }
 
-.message p {
-  margin: 10px 0;
-}
 </style>
 </head>
 
@@ -115,8 +111,12 @@ button {
 
 <div class="container">
 
-<div id="page1" class="page active" onclick="nextPage(2)"></div>
+<!-- PAGE 1 (IMAGE FIXED) -->
+<div id="page1" class="page active" onclick="nextPage(2)">
+  <img src="Birthday Photo Collage Canvas Print in Teal Light Blue Polaroid Style 2.png">
+</div>
 
+<!-- PAGE 2 (VIDEO FIXED) -->
 <div id="page2" class="page">
   <video id="myVideo" src="1604.mp4" playsinline></video>
 
@@ -126,6 +126,7 @@ button {
   </div>
 </div>
 
+<!-- PAGE 3 -->
 <div id="page3" class="page">
   <div id="blurbg"></div>
   <div id="overlay"></div>
